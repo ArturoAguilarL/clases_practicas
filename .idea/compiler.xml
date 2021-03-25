@@ -8,10 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="tt" />
         <module name="tm" />
+        <module name="Dakar" />
         <module name="SaveTheRopa" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Dakar" target="11" />
       <module name="practica-23-03" target="11" />
       <module name="practica-25-03" target="11" />
       <module name="SaveTheRopa" target="11" />
