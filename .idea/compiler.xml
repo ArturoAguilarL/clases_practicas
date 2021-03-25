@@ -6,12 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="tt" />
         <module name="tm" />
+        <module name="SaveTheRopa" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="practica-23-03" target="11" />
+      <module name="practica-25-03" target="11" />
+      <module name="SaveTheRopa" target="11" />
       <module name="tm" target="11" />
+      <module name="tt" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
