@@ -13,13 +13,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PasswordSimple extends Password{
-    private  String PASSWORD_PATTERN_SIMPLE =
-            "^(?=.*[0-9])(?=.*[a-z]).{4,}$";
-    private final Pattern pattern = Pattern.compile(PASSWORD_PATTERN_SIMPLE);
+    //String PASSWORD_PATTERN_SIMPLE = "^(?=.*[0-9])(?=.*[a-z]).{4,}$";
 
-    public boolean isValid(final String password) {
-        //Used to search for the pattern
-        Matcher matcher = pattern.matcher(password);
-        return matcher.matches();
+    public PasswordSimple() {
+        super("\"^(?=.*[0-9])(?=.*[a-z]).{4,}$\"");
     }
+
 }

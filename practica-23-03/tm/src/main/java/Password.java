@@ -13,6 +13,7 @@ import java.util.regex.*;
 public class Password {
 
     protected String pass;
+    protected String regex;
     //Patron de pass
     private static final String PASSWORD_PATTERN =
             "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
@@ -20,10 +21,13 @@ public class Password {
     //Pattern pertence a regex - Defines a pattern (to be used in a search)
     private static final Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
 
+    public Password(String regex) {
+        this.regex = regex;
+    }
 
     public boolean isValid(final String password) {
         //Used to search for the pattern
-        Matcher matcher = pattern.matcher(password);
+        Matcher matcher = pattern.matches(password);
         return matcher.matches();
     }
 
