@@ -6,19 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tt" />
-        <module name="tm" />
-        <module name="Dakar" />
-        <module name="SaveTheRopa" />
+        <module name="29-03-21" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Dakar" target="11" />
-      <module name="practica-23-03" target="11" />
-      <module name="practica-25-03" target="11" />
-      <module name="SaveTheRopa" target="11" />
-      <module name="tm" target="11" />
-      <module name="tt" target="11" />
+      <module name="29-03-21" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="29-03-21" options="-parameters" />
+    </option>
   </component>
 </project>
