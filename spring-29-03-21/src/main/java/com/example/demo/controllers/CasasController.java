@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.entities.Casa;
 import com.example.demo.services.CasasServices;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +19,33 @@ public class CasasController {
     public ResponseEntity obtenerCasa(@PathVariable String casa){
         return CasasServices.buscarCasa(casa);
     }
-    
+
+    /*
+    @PostMapping("/metroscuadrados")
+    public ResponseEntity calcularMetrosCuadrados(@RequestBody Casa casa){s
+        return CasasServices.calcularMetrosCuadrados(casa);
+    }*/
+
     @PostMapping("/metroscuadrados")
     public ResponseEntity calcularMetrosCuadrados(@RequestBody Casa casa){
-        return CasasServices.calcularMetrosCuadrados(casa);
+        return new ResponseEntity(CasasServices.getTotalMetros(casa), HttpStatus.OK);
     }
+
+
+    /*
+    //Para hacer lo de inyeccion de dependencias con set es:
+    private CasasServices casasServices;
+
+    public void setCasasServices(CasasServices casasServices){
+        this.casasServices = casasServices;
+    }
+    @PostMapping("/calculate")
+    public Casa calculate(@RequestBody Casa casa){
+        this.setCasasServices(new CasasServices());
+        return new ResponseEntity(CasasServices.getTotalMetros(casa), HttpStatus.OK);
+    }
+
+     */
 
 }
     

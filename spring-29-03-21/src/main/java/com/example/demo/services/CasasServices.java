@@ -19,13 +19,24 @@ public class CasasServices {
     }
 
     public static ResponseEntity calcularMetrosCuadrados(Casa casa){
+        System.out.println("Hola miundo");
+        System.out.println("Direccion"+ casa.getDireccion());
         metros(casa);
         habitacion(casa);
         valor(casa);
+        System.out.println(casa.getMetrosCuadrados());
+
         return new ResponseEntity(casa, HttpStatus.OK);
     }
 
-
+    public static double getTotalMetros(Casa casa){
+        double total = 0;
+        for (Habitacion hab:casa.getHabitaciones()) {
+            total += hab.getAncho()*hab.getLargo();
+            System.out.println("Ancho:"+ hab.getAncho() + "Largo:"+ hab.getLargo());
+        }
+        return total;
+    }
 
 
     private static void metros(Casa casa) {
