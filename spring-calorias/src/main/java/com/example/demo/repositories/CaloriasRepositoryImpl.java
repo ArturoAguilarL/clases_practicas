@@ -1,5 +1,6 @@
 package com.example.demo.repositories;
 
+import com.example.demo.exceptions.IngredientNotFound;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -21,7 +22,7 @@ import java.util.Optional;
 public class CaloriasRepositoryImpl implements CaloriasRepository{
 
     @Override
-    public CaloriaPorIngredienteDTO encontrarCaloriaPorIngrediente(String nombre) {
+    public CaloriaPorIngredienteDTO encontrarCaloriaPorIngrediente(String nombre) throws IngredientNotFound {
         List<CaloriaPorIngredienteDTO> caloriasDTOS = loadDataBase();
         CaloriaPorIngredienteDTO resultado = null;
         if(caloriasDTOS != null){
@@ -30,7 +31,10 @@ public class CaloriasRepositoryImpl implements CaloriasRepository{
                     .findFirst();
             if(item.isPresent()){
                 resultado = item.get();
+            } else{
+                throw new IngredientNotFound(nombre);
             }
+
         }
         return resultado;
     }

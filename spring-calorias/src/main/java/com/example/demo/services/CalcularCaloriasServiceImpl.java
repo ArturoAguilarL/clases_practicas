@@ -4,6 +4,7 @@ import com.example.demo.dto.CaloriaPorIngredienteDTO;
 import com.example.demo.dto.IngredienteDTO;
 import com.example.demo.dto.PlatoDTO;
 import com.example.demo.dto.PlatoResponseDTO;
+import com.example.demo.exceptions.IngredientNotFound;
 import com.example.demo.repositories.CaloriasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,14 +22,16 @@ public class CalcularCaloriasServiceImpl implements CalcularCaloriasService {
         this.caloriaRepositorio = caloriasRepositorio;
     }
 
-    private Double calcularCaloria(Double peso, String nombre){
+    private Double calcularCaloria(Double peso, String nombre) throws IngredientNotFound {
         CaloriaPorIngredienteDTO caloriasPorIngrediente = caloriaRepositorio.encontrarCaloriaPorIngrediente(nombre);
-        System.out.println("Calorias:"+caloriasPorIngrediente.getCalories());
+        //if(caloriasPorIngrediente == null){
+        //    throw new IngredientNotFound("Ingrediente" +nombre +"no encontrado" );
+        //}
         return (peso * caloriasPorIngrediente.getCalories()) / 100;
     }
 
     @Override
-    public PlatoResponseDTO calcular(PlatoDTO plato) {
+    public PlatoResponseDTO calcular(PlatoDTO plato) throws IngredientNotFound {
         PlatoResponseDTO response = new PlatoResponseDTO();
         Map<String, Double> caloriasPorIngrediente = new HashMap<>();
         double caloriasTotales = 0.0;
